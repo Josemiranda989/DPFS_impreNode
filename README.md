@@ -1,5 +1,7 @@
 # impreNode - Presentación del Proyecto
 
+![LogoImpreNode](https://github.com/Josemiranda989/DPFS_impreNode/blob/main/design/logo.png)
+
 ## 🌍 Público Destinado
 Describe aquí a quién va dirigido tu proyecto. ¿Desarrolladores, diseñadores, emprendedores, empresas? Especifica el perfil de clientes o usuarios.
 
@@ -56,3 +58,4 @@ Fuente elegida Roboto Slab
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
 ```
+
