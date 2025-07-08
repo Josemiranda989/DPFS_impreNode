@@ -1,0 +1,16 @@
+.container {
+    width: 90%;
+    margin: 20px;
+    padding: 10px;
+    background-color: #d8d6d6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container img {
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+}
