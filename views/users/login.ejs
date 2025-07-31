@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Head -->
-<%- include('../partials/head.ejs', {style: 'detail.css' }) %>
-
-    <body>
-        <!-- Header -->
-        <%- include('../partials/header.ejs') %>
-
-            <main>
-                
-            </main>
-            <!-- Footer -->
-            <%- include('../partials/footer.ejs') %>
-                <!-- Bootstrap -->
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-                    crossorigin="anonymous"></script>
-    </body>
-
+<%- include('../partials/head.ejs', {style: 'form.css'}) %>
+<body>
+  <!-- Header -->
+  <%- include('../partials/header.ejs') %>
+  <!-- Main -->
+   <main>
+    <div class="container">
+        <h1>Iniciar Sesión</h1>
+        <form class="form" action="" method="get">
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="ejemplo@gmail.com">   
+            </div>
+            <div>
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password" placeholder="Aa12345678">   
+            </div>
+            <button type="submit">Iniciar sesión</button>
+            </form>
+    </div>
+   </main>  
+  <!-- Footer -->
+  <%- include('../partials/footer.ejs') %>
+  <!-- Scripts -->
+  <%- include('../partials/scripts.ejs') %>
+</body>
 </html>
