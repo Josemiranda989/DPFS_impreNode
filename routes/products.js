@@ -6,6 +6,6 @@ var router = express.Router();
 router.get('/', catalog);
 
 /* GET detail page. */
-router.get('/detail', detail);
+router.get('/detail/:id', detail);
 
 module.exports = router;
