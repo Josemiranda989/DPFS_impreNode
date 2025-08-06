@@ -6,13 +6,33 @@
     <body>
         <!-- Header -->
         <%- include('../partials/header.ejs') %>
-        <main>
+            <main>
+                <h1>Modelos 3D</h1>
+                <p>Explore nuestra categoría "Todo", que contiene toda nuestra colección de modelos de impresión 3D en
+                    un solo lugar.</p>
+                <section class="container">
 
-        </main>
-        <!-- Footer -->
-        <%- include('../partials/footer.ejs') %>
-        <!-- Bootstrap -->
-        <%- include('../partials/scripts.ejs') %>
+                    <% products.forEach(prod => { %>
+                    <article class="card">
+                        <a href="/products/detail/<%= prod.id %>">
+                            <img src="/images/products/<%= prod.image %>" alt="imagenProd">
+                            <div >
+                                <div class="card-info">
+                                    <h5><%= prod.name %></h5>
+                                    <h6>$<%= prod.price %></h6>
+                                </div>
+                                <p><%= prod.description %></p>
+                            </div>
+                        </a>
+                    </article>
+                    <% }) %>
+                   
+                </section>
+            </main>
+            <!-- Footer -->
+            <%- include('../partials/footer.ejs') %>
+                <!-- Bootstrap -->
+                <%- include('../partials/scripts.ejs') %>
     </body>
 
 </html>

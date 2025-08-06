@@ -1,0 +1,6 @@
+- Crear metodo para mostrar miles de la lista de precios
+- Implementar Vista Form de creacion
+- Implementar Procesamiento Form de creacion
+- Implementar Vista Form de edición
+- Implementar Procesamiento Form de edición
+- Implementar procesamiento de eliminacion 

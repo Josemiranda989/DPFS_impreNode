@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "firstName": "José",
+        "lastName": "Miranda",
+        "email": "josemiranda989@gmail.com",
+        "password": "Aa12345678",
+        "category": "cv",
+        "image": "profile.png",
+        "rol": "admin"
+    },
+    {
+        "id": 2,
+        "firstName": "Mario",
+        "lastName": "Pilar",
+        "email": "mp@gmail.com",
+        "password": "Aa12345678",
+        "category": "cv",
+        "image": "profile.png",
+        "rol": "user"
+    }
+]

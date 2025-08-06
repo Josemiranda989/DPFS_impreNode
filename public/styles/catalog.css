@@ -1,0 +1,31 @@
+main {
+    text-align: center;
+    margin: 10px 0;
+}
+a {
+    color: rgb(225, 225, 225);
+}
+.container {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    border-radius: 10px;
+    gap: 5px;
+}
+
+.card {
+    width: 300px;
+    background-color: rgb(31, 31, 31);
+}
+
+.card img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

@@ -9,10 +9,10 @@
 
             <main>
                 <div class="container">
-                    <img src="/images/examples/img1.png" alt="prod-image">
-                    <h2>Titulo del producto con id <%= id %></h2>
-                    <h4>Precio</h4>
-                    <p>Descripcion</p>
+                    <img src="/images/products/<%= prod.image %>" alt="<%= prod.name %>">
+                    <h2><%= prod.name %></h2>
+                    <h4>$<%= prod.price %></h4>
+                    <p><%= prod.description %></p>
                     <div>
                         <button>Comprar</button>
                         <button>Agregar al carrito</button>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head.ejs', {style: 'form.css' }) %>
+
+    <body>
+        <!-- Header -->
+        <%- include('../partials/header.ejs') %>
+            <!-- Main -->
+            <main>
+                <div class="container">
+                    <h1>Nuevo producto</h1>
+                    <form class="form" action="" method="get">
+                        <div>
+                            <label for="name">Nombre</label>
+                            <input type="text" name="name" id="name" placeholder="Tratalalero tralala" required>
+                        </div>
+                        <div>
+                            <label for="description">Descripcion</label>
+                            <textarea name="description" id="description" placeholder="Breve descripcion del funcionamiento"></textarea>
+                        </div>
+                        <div>
+                            <label for="image">Imagen</label>
+                            <input type="file" name="image" id="image" disabled>
+                        </div>
+                        <div>
+                            <label for="category">category</label>
+                            <select name="category" id="category">
+                                <option value="Juguetes">Juguetes</option>
+                                <option value="Jarras">Jarras</option>
+                                <option value="Llaveros">Llaveros</option>
+                            </select>
+                        </div>
+                          <div>
+                            <label for="colors">Colores</label>
+                            <select name="colors" id="colors">
+                                <option value="Rojo">Rojo</option>
+                                <option value="Verde">Verde</option>
+                                <option value="Amarillo">Amarillo</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="price">Precio</label>
+                            <input type="number" name="price" id="price" placeholder="$250609" required>
+                        </div>
+                        <button type="submit">Crear producto</button>
+                    </form>
+                </div>
+            </main>
+            <!-- Footer -->
+            <%- include('../partials/footer.ejs') %>
+                <!-- Scripts -->
+                <%- include('../partials/scripts.ejs') %>
+    </body>
+
+</html>
