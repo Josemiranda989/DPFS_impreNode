@@ -8,16 +8,35 @@
         <%- include('../partials/header.ejs') %>
 
             <main>
-                <div class="container">
-                    <img src="/images/products/<%= prod.image %>" alt="<%= prod.name %>">
-                    <h2><%= prod.name %></h2>
-                    <h4>$<%= prod.price %></h4>
-                    <p><%= prod.description %></p>
-                    <div>
-                        <button>Comprar</button>
-                        <button>Agregar al carrito</button>
-                    </div>
+                <% if (prod) { %>
+                 <div class="container">
+                        <img src="/images/products/<%= prod.image %>" alt="<%= prod.name %>">
+                        <h2><%= prod.name %></h2>
+                        <h4>$<%= prod.price %></h4>
+                        <p><%= prod.description %></p>
+                        <div>
+                            <button>Comprar</button>
+                            <button>Agregar al carrito</button>
+                        </div>
+                        <% if (true) { %>
+                            <a class="btn" href="/products/update/<%= prod.id %>">Editar producto</a>
+                            <form action="/products/delete/<%= prod.id %>?_method=DELETE" method="post">
+                                <button type="submit">Eliminar producto</button>
+                            </form>
+                        <% } %>
                 </div>
+                <% } else { %>
+                <div class="container">
+                        <img src="https://demofree.sirv.com/nope-not-here.jpg" alt="Producto no disponible">
+                        <h2>Este producto no está disponible</h2>
+                        <h4>$-</h4>
+                        <p>-</p>
+                        <div>
+                            <button disabled>Comprar</button>
+                            <button disabled>Agregar al carrito</button>
+                        </div>
+                </div>
+                <% } %>
             </main>
             <!-- Footer -->
             <%- include('../partials/footer.ejs') %>

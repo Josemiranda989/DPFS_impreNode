@@ -1,92 +1,119 @@
 [
-  {
-    "id": 1,
-    "name": "Llavero Nariz Gigante",
-    "description": "Un llavero con forma de nariz exagerada que estornuda al presionarlo",
-    "image": "example1.png",
-    "category": "Llaveros",
-    "colors": ["Rosa", "Beige", "Rojo"],
-    "price": 25000
-  },
-  {
-    "id": 2,
-    "name": "Soporte Banana Phone",
-    "description": "Soporte para celular en forma de banana con carita feliz",
-    "image": "example1.png",
-    "category": "Accesorios",
-    "colors": ["Amarillo", "Verde"],
-    "price": 28000
-  },
-  {
-    "id": 3,
-    "name": "Maceta Ovni Abductando Planta",
-    "description": "Maceta simulando un platillo volador llevando una suculenta",
-    "image": "example1.png",
-    "category": "Decoración",
-    "colors": ["Plateado", "Verde", "Luz Neón"],
-    "price": 30000
-  },
-  {
-    "id": 4,
-    "name": "Soporte Lapicera Pulpo",
-    "description": "Pulpo con tentáculos que sostienen lápices como si fueran espadas",
-    "image": "example1.png",
-    "category": "Oficina",
-    "colors": ["Violeta", "Azul", "Turquesa"],
-    "price": 27000
-  },
-  {
-    "id": 5,
-    "name": "Llavero Pancho con Mostaza",
-    "description": "Llavero en forma de hot dog con mostaza 3D que nunca se seca",
-    "image": "example1.png",
-    "category": "Llaveros",
-    "colors": ["Rojo", "Amarillo", "Marrón"],
-    "price": 23000
-  },
-  {
-    "id": 6,
-    "name": "Mini Busto de Messi con Gafas",
-    "description": "Figura del busto de Messi con gafas de sol y cara de sorpresa",
-    "image": "example1.png",
-    "category": "Regalos",
-    "colors": ["Piel", "Negro", "Dorado"],
-    "price": 30000
-  },
-  {
-    "id": 7,
-    "name": "Soporte Papel Higiénico Dragón",
-    "description": "Un dragón que sostiene el rollo como si fuera su tesoro",
-    "image": "example1.png",
-    "category": "Baño",
-    "colors": ["Rojo", "Negro", "Gris"],
-    "price": 32000
-  },
-  {
-    "id": 8,
-    "name": "Maceta Trompeta Sonriente",
-    "description": "Maceta con forma de trompeta que parece estar cantando",
-    "image": "example1.png",
-    "category": "Decoración",
-    "colors": ["Dorado", "Blanco", "Verde"],
-    "price": 28000
-  },
-  {
-    "id": 9,
-    "name": "Llavero Alpaca Disco",
-    "description": "Alpaca con gafas de sol y bolita disco colgando",
-    "image": "example1.png",
-    "category": "Llaveros",
-    "colors": ["Rosa", "Plateado", "Celeste"],
-    "price": 24000
-  },
-  {
-    "id": 10,
-    "name": "Soporte Cuchara Bailarina",
-    "description": "Figura de bailarina que sostiene la cuchara como si fuera una coreografía",
-    "image": "example1.png",
-    "category": "Cocina",
-    "colors": ["Blanco", "Rojo", "Fucsia"],
-    "price": 26000
-  }
+ {
+  "id": 1,
+  "name": "Llavero Nariz Gigante",
+  "description": "Un llavero con forma de nariz exagerada que estornuda al presionarlo",
+  "image": "example1.png",
+  "category": "Decoración",
+  "colors": "Rojo",
+  "price": 25000
+ },
+ {
+  "id": 2,
+  "name": "Soporte Banana Phone",
+  "description": "Soporte para celular en forma de banana con carita feliz",
+  "image": "example1.png",
+  "category": "Accesorios",
+  "colors": "Amarillo",
+  "price": 28000
+ },
+ {
+  "id": 3,
+  "name": "Maceta Ovni Abductando Planta",
+  "description": "Maceta simulando un platillo volador llevando una suculenta",
+  "image": "example1.png",
+  "category": "Decoración",
+  "colors": "Verde",
+  "price": 30000
+ },
+ {
+  "id": 4,
+  "name": "Soporte Lapicera Pulpo",
+  "description": "Pulpo con tentáculos que sostienen lápices como si fueran espadas",
+  "image": "example1.png",
+  "category": "Oficina",
+  "colors": "Rojo",
+  "price": 27000
+ },
+ {
+  "id": 5,
+  "name": "Llavero Pancho con Mostaza",
+  "description": "Llavero en forma de hot dog con mostaza 3D que nunca se seca",
+  "image": "example1.png",
+  "category": "Llaveros",
+  "colors": "Rojo",
+  "price": 23000
+ },
+ {
+  "id": 6,
+  "name": "Mini Busto de Messi con Gafas",
+  "description": "Figura del busto de Messi con gafas de sol y cara de sorpresa",
+  "image": "example1.png",
+  "category": "Regalos",
+  "colors": "Verde",
+  "price": 30000
+ },
+ {
+  "id": 7,
+  "name": "Soporte Papel Higiénico Dragón",
+  "description": "Un dragón que sostiene el rollo como si fuera su tesoro",
+  "image": "example1.png",
+  "category": "Baño",
+  "colors": "Rojo",
+  "price": 32000
+ },
+ {
+  "id": 8,
+  "name": "Maceta Trompeta Sonriente",
+  "description": "Maceta con forma de trompeta que parece estar cantando",
+  "image": "example1.png",
+  "category": "Decoración",
+  "colors": "Verde",
+  "price": 28000
+ },
+ {
+  "id": 9,
+  "name": "Llavero Alpaca Disco",
+  "description": "Alpaca con gafas de sol y bolita disco colgando",
+  "image": "example1.png",
+  "category": "Llaveros",
+  "colors": "Amarillo",
+  "price": 24000
+ },
+ {
+  "id": 10,
+  "name": "Soporte Cuchara Bailarina",
+  "description": "Figura de bailarina que sostiene la cuchara como si fuera una coreografía",
+  "image": "example1.png",
+  "category": "Cocina",
+  "colors": "Amarillo",
+  "price": 26000
+ },
+ {
+  "id": 11,
+  "name": "Tralalero",
+  "description": "Meme italiano brain rot",
+  "category": "Juguetes",
+  "image": "not-found.jpg",
+  "colors": "Verde",
+  "price": "15000"
+ },
+ {
+  "id": 12,
+  "name": "Mario Bross Box Surprise",
+  "description": "Caja para almacenar tarjetas de switch",
+  "category": "Juguetes",
+  "image": "not-found.jpg",
+  "colors": "Amarillo",
+  "price": "20000"
+ },
+ {
+  "id": 13,
+  "name": "Kylan Weiss",
+  "description": "Velit labore sunt mo",
+  "category": "Jarras",
+  "image": "not-found.jpg",
+  "colors": "Rojo",
+  "price": "395"
+ }
 ]

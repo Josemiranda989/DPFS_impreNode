@@ -4,7 +4,7 @@ const usersController = {
     },
     register: function (req, res, next) {
         res.render("users/register.ejs", { title: "Express" });
-    },
+    }
 };
 
 module.exports = usersController;

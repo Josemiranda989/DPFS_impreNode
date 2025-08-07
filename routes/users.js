@@ -1,10 +1,12 @@
 var express = require('express');
-const {login, register} = require('../controllers/usersController');
+const {login, register, indexUsers} = require('../controllers/usersController');
 var router = express.Router();
 
+// http://localhost:3000/users/login
 /* GET login form page. */
 router.get('/login', login);
 
+// http://localhost:3000/users/register
 /* GET register form page. */
 router.get('/register', register);
 

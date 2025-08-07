@@ -8,48 +8,61 @@
             <!-- Main -->
             <main>
                 <div class="container">
-                    <h1>Editar producto</h1>
-                    <form class="form" action="" method="get">
+                    <h1>Editando producto <%= prod.name %></h1>
+                    <form class="form" action="/products/update/<%= prod.id %>?_method=put" method="post">
                         <div>
                             <label for="name">Nombre</label>
-                            <input type="text" name="name" id="name" placeholder="Tratalalero tralala" required>
+                            <input type="text" name="name" id="name" placeholder="Tratalalero tralala"
+                                value="<%= prod.name %>" required>
                         </div>
                         <div>
                             <label for="description">Descripcion</label>
-                            <textarea name="description" id="description" placeholder="Breve descripcion del funcionamiento"></textarea>
+                            <textarea name="description" id="description"
+                                placeholder="Breve descripcion del funcionamiento"><%= prod.description %></textarea>
                         </div>
                         <div>
                             <label for="image">Imagen</label>
                             <input type="file" name="image" id="image" disabled>
+                            <img width="100px" src="/images/products/<%= prod.image %>" alt="<%= prod.name %>">
                         </div>
                         <div>
-                            <label for="category">category</label>
+                            <label for="category">Categorias</label>
                             <select name="category" id="category">
-                                <option value="Juguetes">Juguetes</option>
-                                <option value="Jarras">Jarras</option>
-                                <option value="Llaveros">Llaveros</option>
+
+                                <% categories.forEach(category=> { %>
+                                    <option value="<%= category %>" <%=category==prod.category ? 'selected' : '' %>><%=
+                                            category %>
+                                    </option>
+                                <% }) %>
+
                             </select>
+
+
                         </div>
-                          <div>
+                        <div>
                             <label for="colors">Colores</label>
                             <select name="colors" id="colors">
-                                <option value="Rojo">Rojo</option>
-                                <option value="Verde">Verde</option>
-                                <option value="Amarillo">Amarillo</option>
+                                <% colors.forEach(color=> { %>
+                                    <option value="<%= color %>" <%=color==prod.colors ? 'selected' : '' %>><%= color %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                         <div>
                             <label for="price">Precio</label>
-                            <input type="number" name="price" id="price" placeholder="$250609" required>
+                            <input type="number" name="price" id="price" placeholder="$250609" value="<%= prod.price %>"
+                                required>
                         </div>
                         <button type="submit">Editar producto</button>
+                        
                     </form>
+
                 </div>
             </main>
             <!-- Footer -->
             <%- include('../partials/footer.ejs') %>
-                <!-- Scripts -->
-                <%- include('../partials/scripts.ejs') %>
+            <!-- Scripts -->
+            <%- include('../partials/scripts.ejs') %>
     </body>
 
 </html>

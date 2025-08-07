@@ -1,8 +1,6 @@
 const indexController = {
     home: function (req, res, next) {
-        res.render("index.ejs", {
-            algo: "Esto es una variable que le paso desde el servidor",
-        });
+        res.render('index.ejs')
     },
     contact: function (req, res, next) {
         res.render("contact-us.ejs", { title: "Express" });
