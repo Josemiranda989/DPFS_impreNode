@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head.ejs', {style: 'form.css' }) %>
+
+    <body>
+        <!-- Header -->
+        <%- include('../partials/header.ejs') %>
+            <!-- Main -->
+            <main>
+                <div class="container">
+                    <div>
+                        <h2>Agregar Color</h2>
+                        <form class="form" action="/products/new-color" method="post">
+                            <div>
+                                <label for="name">Nombre</label>
+                                <input type="text" name="name" id="name" placeholder="Tratalalero tralala" required>
+                            </div>
+                            <div>
+                                <label for="code">Codigo de color</label>
+                                <input type="text" name="code" id="code" placeholder="#4D332E" required maxlength="7">
+                            </div>
+
+                            <button type="submit">Agregar color</button>
+                        </form>
+                    </div>
+
+                    <div>
+                        <h2>Agregar Categoria</h2>
+                        <form class="form" action="/products/new-category" method="post">
+                            <div>
+                                <label for="name">Nombre</label>
+                                <input type="text" name="name" id="name" placeholder="Tratalalero tralala" required>
+                            </div>
+
+                            <button type="submit">Agregar categoria</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="container">
+                    <!-- Colores -->
+                    <ul>
+                        <% colors.forEach(color => { %>
+                        <li><%= color.name %> <p style="background-color: <%= color.code %>;" class="color"></p></li> 
+                        <% }) %>
+                        </ul>
+                    <!-- Categorias -->
+                    <ul>
+                        <% categories.forEach(category => { %>
+                         <li><%= category.name %></li>
+                        <% }) %>
+                    </ul>
+                </div>
+            </main>
+            <!-- Footer -->
+            <%- include('../partials/footer.ejs') %>
+                <!-- Scripts -->
+                <%- include('../partials/scripts.ejs') %>
+    </body>
+
+</html>

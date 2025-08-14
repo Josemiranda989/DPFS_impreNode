@@ -1,39 +1,21 @@
 [
  {
-  "id": 1,
-  "name": "Llavero Nariz Gigante",
-  "description": "Un llavero con forma de nariz exagerada que estornuda al presionarlo",
-  "image": "example1.png",
-  "category": "Decoración",
-  "colors": "Rojo",
-  "price": 25000
- },
- {
   "id": 2,
   "name": "Soporte Banana Phone",
   "description": "Soporte para celular en forma de banana con carita feliz",
-  "image": "example1.png",
+  "image": "prod-1755031022856.webp",
   "category": "Accesorios",
   "colors": "Amarillo",
-  "price": 28000
+  "price": "30000"
  },
  {
   "id": 3,
-  "name": "Maceta Ovni Abductando Planta",
+  "name": "Maceta Ovni Abductando",
   "description": "Maceta simulando un platillo volador llevando una suculenta",
-  "image": "example1.png",
-  "category": "Decoración",
+  "image": "prod-1755197702898.png",
+  "category": "Accesorios para el hogar",
   "colors": "Verde",
-  "price": 30000
- },
- {
-  "id": 4,
-  "name": "Soporte Lapicera Pulpo",
-  "description": "Pulpo con tentáculos que sostienen lápices como si fueran espadas",
-  "image": "example1.png",
-  "category": "Oficina",
-  "colors": "Rojo",
-  "price": 27000
+  "price": "30000"
  },
  {
   "id": 5,
@@ -63,57 +45,39 @@
   "price": 32000
  },
  {
-  "id": 8,
-  "name": "Maceta Trompeta Sonriente",
-  "description": "Maceta con forma de trompeta que parece estar cantando",
-  "image": "example1.png",
-  "category": "Decoración",
+  "id": 9,
+  "name": "Llavero Alpaca Disco",
+  "description": "Alpaca con gafas de sol y bolita disco colgando",
+  "image": "prod-1755197771787.jpg",
+  "category": "Juguetes y juegos",
   "colors": "Verde",
-  "price": 28000
+  "price": "24000"
+ },
+ {
+  "id": 7,
+  "name": "Docker fire",
+  "description": "Aliquip autem ab ea ",
+  "category": "Soportes",
+  "image": "image-1755030371050.png",
+  "colors": "Amarillo",
+  "price": "250"
+ },
+ {
+  "id": 8,
+  "name": "Tanjiro",
+  "description": "Natus veniam commod",
+  "category": "Llaveros",
+  "image": "prod-1755030786954.png",
+  "colors": "Blanco",
+  "price": "181"
  },
  {
   "id": 9,
   "name": "Llavero Alpaca Disco",
   "description": "Alpaca con gafas de sol y bolita disco colgando",
-  "image": "example1.png",
-  "category": "Llaveros",
-  "colors": "Amarillo",
-  "price": 24000
- },
- {
-  "id": 10,
-  "name": "Soporte Cuchara Bailarina",
-  "description": "Figura de bailarina que sostiene la cuchara como si fuera una coreografía",
-  "image": "example1.png",
-  "category": "Cocina",
-  "colors": "Amarillo",
-  "price": 26000
- },
- {
-  "id": 11,
-  "name": "Tralalero",
-  "description": "Meme italiano brain rot",
-  "category": "Juguetes",
-  "image": "not-found.jpg",
+  "category": "Juguetes y juegos",
+  "image": "prod-1755197771787.jpg",
   "colors": "Verde",
-  "price": "15000"
- },
- {
-  "id": 12,
-  "name": "Mario Bross Box Surprise",
-  "description": "Caja para almacenar tarjetas de switch",
-  "category": "Juguetes",
-  "image": "not-found.jpg",
-  "colors": "Amarillo",
-  "price": "20000"
- },
- {
-  "id": 13,
-  "name": "Kylan Weiss",
-  "description": "Velit labore sunt mo",
-  "category": "Jarras",
-  "image": "not-found.jpg",
-  "colors": "Rojo",
-  "price": "395"
+  "price": "24000"
  }
 ]

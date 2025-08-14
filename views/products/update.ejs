@@ -8,61 +8,72 @@
             <!-- Main -->
             <main>
                 <div class="container">
-                    <h1>Editando producto <%= prod.name %></h1>
-                    <form class="form" action="/products/update/<%= prod.id %>?_method=put" method="post">
+                    <% if (prod) { %>
                         <div>
-                            <label for="name">Nombre</label>
-                            <input type="text" name="name" id="name" placeholder="Tratalalero tralala"
-                                value="<%= prod.name %>" required>
-                        </div>
-                        <div>
-                            <label for="description">Descripcion</label>
-                            <textarea name="description" id="description"
-                                placeholder="Breve descripcion del funcionamiento"><%= prod.description %></textarea>
-                        </div>
-                        <div>
-                            <label for="image">Imagen</label>
-                            <input type="file" name="image" id="image" disabled>
-                            <img width="100px" src="/images/products/<%= prod.image %>" alt="<%= prod.name %>">
-                        </div>
-                        <div>
-                            <label for="category">Categorias</label>
-                            <select name="category" id="category">
+                        <h1>Editando producto <%= prod.name %>
+                        </h1>
+                        <form class="form" action="/products/update/<%= prod.id %>?_method=put" method="post"
+                            enctype="multipart/form-data">
+                            <div>
+                                <label for="name">Nombre</label>
+                                <input type="text" name="name" id="name" placeholder="Tratalalero tralala"
+                                    value="<%= prod.name %>" required>
+                            </div>
+                            <div>
+                                <label for="description">Descripcion</label>
+                                <textarea name="description" id="description"
+                                    placeholder="Breve descripcion del funcionamiento"><%= prod.description %></textarea>
+                            </div>
+                            <div>
+                                <label for="image">Imagen</label>
+                                <input type="file" name="image" id="image">
+                                <img width="100px" src="/images/products/<%= prod.image %>" alt="<%= prod.name %>">
+                            </div>
+                            <div>
+                                <label for="category">Categorias</label>
+                                <select name="category" id="category">
 
-                                <% categories.forEach(category=> { %>
-                                    <option value="<%= category %>" <%=category==prod.category ? 'selected' : '' %>><%=
-                                            category %>
-                                    </option>
-                                <% }) %>
+                                    <% categories.forEach(category=> { %>
+                                        <option value="<%= category.name %>" <%=category.name==prod.category
+                                            ? 'selected' : '' %>><%= category.name %>
+                                        </option>
+                                        <% }) %>
 
-                            </select>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="colors">Colores</label>
+                                <select name="colors" id="colors">
+                                    <% colors.forEach(color=> { %>
+                                        <option value="<%= color.name %>" <%=color.name==prod.colors ? 'selected' : ''
+                                            %>><%= color.name %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="price">Precio</label>
+                                <input type="number" name="price" id="price" placeholder="$250609"
+                                    value="<%= prod.price %>" required>
+                            </div>
+                            <button type="submit">Editar producto</button>
 
-
+                        </form>
                         </div>
-                        <div>
-                            <label for="colors">Colores</label>
-                            <select name="colors" id="colors">
-                                <% colors.forEach(color=> { %>
-                                    <option value="<%= color %>" <%=color==prod.colors ? 'selected' : '' %>><%= color %>
-                                    </option>
-                                    <% }) %>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="price">Precio</label>
-                            <input type="number" name="price" id="price" placeholder="$250609" value="<%= prod.price %>"
-                                required>
-                        </div>
-                        <button type="submit">Editar producto</button>
-                        
-                    </form>
+                        <% } else { %>
+                            <div >
+                                <img src="https://demofree.sirv.com/nope-not-here.jpg" alt="Producto no disponible">
+                                <h2>El producto que desea editar no existe</h2>
+                                <a href="/">Volver a home</a>
+                            </div>
+                        <% } %>
 
                 </div>
             </main>
             <!-- Footer -->
             <%- include('../partials/footer.ejs') %>
-            <!-- Scripts -->
-            <%- include('../partials/scripts.ejs') %>
+                <!-- Scripts -->
+                <%- include('../partials/scripts.ejs') %>
     </body>
 
 </html>

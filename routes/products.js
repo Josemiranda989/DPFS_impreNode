@@ -1,4 +1,5 @@
 var express = require("express");
+var router = express.Router();
 const {
     catalog,
     detail,
@@ -7,8 +8,13 @@ const {
     createProduct,
     updateProduct,
     deleteProduct,
+    utils,
+    createCategory,
+    createColor
+
 } = require("../controllers/productsController");
-var router = express.Router();
+const { uploadProd } = require("../middlewares/multer");
+
 
 // http://localhost:3000/products/
 /* GET catalog page. */
@@ -19,14 +25,22 @@ router.get("/", catalog);
 router.get("/detail/:id", detail);
 
 /* GET create form page. */
-router.get("/create", createForm);
-
-router.post("/create", createProduct);
+router.get("/create",  createForm);
+router.post("/create", uploadProd.single('image'), createProduct);
 
 /* GET update form page. */
 router.get("/update/:id", updateForm);
-router.put("/update/:id", updateProduct);
+router.put("/update/:id",uploadProd.single('image'), updateProduct);
 
+/* Delete process to delete product. */
 router.delete("/delete/:id", deleteProduct);
+
+/* GET forms utils pages. */
+router.get("/utils",  utils);
+
+/* POST new colors and categories. */
+router.post('/new-category', createCategory)
+router.post('/new-color', createColor)
+
 
 module.exports = router;

@@ -8,8 +8,9 @@
             <!-- Main -->
             <main>
                 <div class="container">
+                    <div>
                     <h1>Nuevo producto</h1>
-                    <form class="form" action="/products/create" method="post">
+                    <form class="form" action="/products/create" method="post" enctype="multipart/form-data">
                         <div>
                             <label for="name">Nombre</label>
                             <input type="text" name="name" id="name" placeholder="Tratalalero tralala" required>
@@ -20,22 +21,28 @@
                         </div>
                         <div>
                             <label for="image">Imagen</label>
-                            <input type="file" name="image" id="image" disabled>
+                            <input type="file" name="image" id="image">
                         </div>
                         <div>
-                            <label for="category">category</label>
-                            <select name="category" id="category">
-                                <option value="Juguetes">Juguetes</option>
-                                <option value="Jarras">Jarras</option>
-                                <option value="Llaveros">Llaveros</option>
+                            <label for="category">Categoria</label>
+                              <select name="category" id="category">
+                                <option value="" disabled selected>Elegi una categoria</option>
+                                <% categories.forEach(category=> { %>
+                                    <option value="<%= category.name %>"><%=
+                                            category.name %>
+                                    </option>
+                                <% }) %>
+
                             </select>
                         </div>
                           <div>
                             <label for="colors">Colores</label>
                             <select name="colors" id="colors">
-                                <option value="Rojo">Rojo</option>
-                                <option value="Verde">Verde</option>
-                                <option value="Amarillo">Amarillo</option>
+                                <option value="" disabled selected>Elegi un color</option>
+                                <% colors.forEach(color=> { %>
+                                    <option value="<%= color.name %>" ><%= color.name %>
+                                    </option>
+                                    <% }) %>
                             </select>
                         </div>
                         <div>
@@ -44,6 +51,8 @@
                         </div>
                         <button type="submit">Crear producto</button>
                     </form>
+                    </div>
+
                 </div>
             </main>
             <!-- Footer -->

@@ -4,7 +4,9 @@
     background-color: rgb(233, 250, 215);
     width: 80%;
     border-radius: 20px;
-
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .container h1{
@@ -24,4 +26,10 @@
 
 .form button {
     margin-top: 10px
+}
+
+.color {
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
 }
