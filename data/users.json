@@ -1,22 +1,20 @@
 [
-    {
-        "id": 1,
-        "firstName": "José",
-        "lastName": "Miranda",
-        "email": "josemiranda989@gmail.com",
-        "password": "Aa12345678",
-        "category": "cv",
-        "image": "profile.png",
-        "rol": "admin"
-    },
-    {
-        "id": 2,
-        "firstName": "Mario",
-        "lastName": "Pilar",
-        "email": "mp@gmail.com",
-        "password": "Aa12345678",
-        "category": "cv",
-        "image": "profile.png",
-        "rol": "user"
-    }
+ {
+  "id": "cedd2979-3632-48a4-85f3-3c14078c0cca",
+  "name": "Mario Bross",
+  "direction": "Voluptatum sunt volu",
+  "email": "admin@gmail.com",
+  "profile": "avatar-1756237334429.png",
+  "rol": "ADMIN",
+  "password": "$2b$12$tL87Z0F74Vx7hj.cErsOVucXmivOsMiuTzvpLNIqSyDhSb8.U5y4i"
+ },
+ {
+  "id": "86336bf3-36c0-4230-8aae-19a46767e582",
+  "name": "Admin",
+  "direction": "addasd",
+  "email": "a@gmail.com",
+  "profile": "avatar-1756241084691.png",
+  "rol": "USER",
+  "password": "$2b$12$e5Snc4pgzdpm44kW0d6dteti2cVRguIu2cC4OunwqgEEEA0rQrKfa"
+ }
 ]

@@ -1,3 +1,5 @@
+const { v4: uuid } = require('uuid');
+
 const fs = require("fs"); // FileSystem -> Manejar Archivos
 const path = require("path"); // Path -> Manejar Rutas
 
@@ -31,13 +33,13 @@ const productsController = {
         res.render("products/create.ejs", { categories, colors });
     },
     createProduct: (req, res) => {
-        console.log("Req.file");
-        console.log(req.file);
+        // console.log("Req.file");
+        // console.log(req.file);
         // Leer el json para utilizar
         const products = JSON.parse(fs.readFileSync(productsPath, "utf8"));
         // Crear nuevo producto en base a lo ingresado en el form por el cliente
         const newProduct = {
-            id: products.length + 1,
+            id: uuid(),
             name: req.body.name,
             description: req.body.description,
             category: req.body.category,
