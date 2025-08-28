@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const methodOverride = require('method-override')
 const session = require('express-session');
-const userLogged = require('./middlewares/userLogged')
+const userLogged = require('./middlewares/auth/userLogged')
 
 
 const indexRouter = require('./routes/index');

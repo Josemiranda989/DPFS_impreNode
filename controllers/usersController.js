@@ -8,7 +8,9 @@ const usersPath = path.join(__dirname, "../", "data", "users.json");
 
 const usersController = {
     login: function (req, res, next) {
-        res.render("users/login.ejs", { title: "Express" });
+        res.render("users/login.ejs", {error : {
+            msg: ''
+        }});
     },
     processLogin: (req, res) => {
         
@@ -33,7 +35,9 @@ const usersController = {
         }
         // Redireccionar al form si los datos no son correctos
         console.log('Los datos no estan bien, o no existe el usuario o los ingresa mal')
-        res.redirect("/users/login")
+        res.render("users/login", {error: {
+            msg: 'Los datos ingresados no son correctos, intente nuevamente'
+        }})
     },
     register: function (req, res, next) {
         res.render("users/register.ejs", { title: "Express" });
@@ -61,6 +65,11 @@ const usersController = {
     profile: function (req, res, next) {
         res.render("users/profile.ejs");
     },
+    processLogout: function(req,res) {
+        req.session.destroy()
+        res.clearCookie('email');
+        res.redirect("/")
+    }
 };
 
 module.exports = usersController;

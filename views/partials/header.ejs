@@ -2,11 +2,14 @@
     <a href="/"><img src="/images/logo.png" alt="logo-impreNode"></a>
     <nav>
         <ul>
+            <% if (locals.isAdmin) { %>
+             <li>😶‍🌫️</li>
+            <% } %>
             <li><a href="/products/">Catalogo</a></li>
             <li><a href="/sale">Ofertas</a></li>
             <% if (locals.isLogged) { %>
                     <li><a href="/users/profile">Perfil</a></li>
-                    <li><a href="/logout">Cerrar Sesion</a></li>
+                    <li><a href="/users/logout">Cerrar Sesion</a></li>
                 <% } else { %>
                     <li><a href="/users/login">Ingresar</a></li>
                     <li><a href="/users/register">Registrarse</a></li>

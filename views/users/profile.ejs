@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head.ejs', {style: 'form.css'}) %>
+<%- include('../partials/head.ejs', {style: 'profile.css'}) %>
 <body>
   <!-- Header -->
   <%- include('../partials/header.ejs') %>
   <!-- Main -->
-   <main>
-        Vista de perfil de <%= locals.userLogged.name %>
+   <main class="container">
+    
+      <h4>Vista de perfil de <%= locals.userLogged.name %></h4>
+    <img src="/images/users/<%= locals.userLogged.profile %>" alt="foto de perfil de <%= locals.userLogged.name %>">
    </main>  
   <!-- Footer -->
   <%- include('../partials/footer.ejs') %>

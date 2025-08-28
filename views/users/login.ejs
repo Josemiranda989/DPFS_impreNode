@@ -9,6 +9,9 @@
     <div class="container">
         <h1>Iniciar Sesión</h1>
         <form class="form" action="/users/login" method="post">
+            <% if (error.msg.length > 0) { %>
+             <small class="error"><%= error.msg %></small>
+            <% } %>
             <div>
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" placeholder="ejemplo@gmail.com">   

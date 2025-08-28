@@ -14,6 +14,7 @@ const {
 
 } = require("../controllers/productsController");
 const { uploadProd } = require("../middlewares/multer");
+const admin = require("../middlewares/auth/admin");
 
 
 // http://localhost:3000/products/
@@ -25,7 +26,7 @@ router.get("/", catalog);
 router.get("/detail/:id", detail);
 
 /* GET create form page. */
-router.get("/create",  createForm);
+router.get("/create", admin , createForm);
 router.post("/create", uploadProd.single('image'), createProduct);
 
 /* GET update form page. */

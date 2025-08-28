@@ -8,8 +8,7 @@ function userLogged(req, res, next) {
         // Setea nuevas variables locales
         res.locals.isLogged = true;
         res.locals.userLogged = req.session.userLogged;
-        res.locals.isAdmin =
-            req.session.userLogged.rol == "ADMIN" ? true : false;
+        res.locals.isAdmin = req.session.userLogged.rol == "ADMIN" ? true : false;
     }
 
     if(!req.session.userLogged && req.cookies.email){
@@ -20,12 +19,10 @@ function userLogged(req, res, next) {
         if(userFound){
             res.locals.isLogged = true;
             req.session.userLogged = userFound;
-            res.locals.userLogged = req.session.userLogged;
-            res.locals.isAdmin =
-            req.session.userLogged.rol == "ADMIN" ? true : false;
+            res.locals.userLogged = userFound
+            res.locals.isAdmin = userFound.rol == "ADMIN" ? true : false;
         }
     }
-
     // Continua con la pila de tareas
     next();
 }
