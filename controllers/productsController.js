@@ -7,28 +7,26 @@ const productsPath = path.join(__dirname, "../", "data", "products.json");
 const categoriesPath = path.join(__dirname, "../", "data", "categories.json");
 const colorsPath = path.join(__dirname, "../", "data", "colors.json");
 
+const db = require('../database/models/index.js')
+
 const productsController = {
-    catalog: function (req, res, next) {
-        const products = JSON.parse(fs.readFileSync(productsPath, "utf8"));
+    catalog: async function (req, res, next) {
+        const products = await db.Product.findAll()
         res.render("products/catalog.ejs", { products });
     },
-    detail: function (req, res, next) {
+    detail: async function (req, res, next) {
         const id = req.params.id;
 
-        const products = JSON.parse(fs.readFileSync(productsPath, "utf8"));
-
-        const prod = products.find((product) => {
-            return product.id == id;
-        });
+        const prod = await db.Product.findByPk(req.params.id)
 
         res.render("products/detail.ejs", { prod });
     },
 
-    createForm: (req, res) => {
+    createForm: async (req, res) => {
         // Categorias
-        const categories = JSON.parse(fs.readFileSync(categoriesPath, "utf8"));
+        const categories = await db.Category.findAll()
         // Colores
-        const colors = JSON.parse(fs.readFileSync(colorsPath, "utf8"));
+        const colors = await db.Color.findAll()
 
         res.render("products/create.ejs", { categories, colors });
     },

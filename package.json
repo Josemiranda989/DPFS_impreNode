@@ -17,9 +17,12 @@
     "method-override": "^3.0.0",
     "morgan": "~1.9.1",
     "multer": "^2.0.2",
+    "mysql2": "^3.14.5",
+    "sequelize": "^6.37.7",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
+    "babel-register": "^6.26.0",
     "nodemon": "^3.1.10"
   }
 }
