@@ -34,7 +34,7 @@
                                 <select name="category" id="category">
 
                                     <% categories.forEach(category=> { %>
-                                        <option value="<%= category.name %>" <%=category.name==prod.category
+                                        <option value="<%= category.id %>" <%=category.name==prod.category
                                             ? 'selected' : '' %>><%= category.name %>
                                         </option>
                                         <% }) %>
@@ -45,7 +45,7 @@
                                 <label for="colors">Colores</label>
                                 <select name="colors" id="colors">
                                     <% colors.forEach(color=> { %>
-                                        <option value="<%= color.name %>" <%=color.name==prod.colors ? 'selected' : ''
+                                        <option value="<%= color.id %>" <%=color.name==prod.colors ? 'selected' : ''
                                             %>><%= color.name %>
                                         </option>
                                         <% }) %>

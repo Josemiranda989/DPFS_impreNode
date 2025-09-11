@@ -1,10 +1,5 @@
 const bycrypt = require("bcryptjs");
-const { v4: uuid } = require("uuid");
-
-const fs = require("fs"); // FileSystem -> Manejar Archivos
-const path = require("path"); // Path -> Manejar Rutas
-
-const usersPath = path.join(__dirname, "../", "data", "users.json");
+const db = require('../database/models/index')
 
 const usersController = {
     login: function (req, res, next) {
@@ -12,12 +7,14 @@ const usersController = {
             msg: ''
         }});
     },
-    processLogin: (req, res) => {
-        
-        // Leer el json de usuarios
-        const users = JSON.parse(fs.readFileSync(usersPath, "utf8"));
-        // Buscar el usuario a loguearse
-        const userFound = users.find(user => user.email == req.body.email);
+    processLogin: async (req, res) => {
+        try {
+            // Buscar el usuario a loguearse
+        const userFound = await db.User.findOne({
+            where: {
+                email: req.body.email
+            }
+        })
         if(userFound){
             // Comparar contraseña
             const isPassOk = bycrypt.compareSync(req.body.password, userFound.password)
@@ -38,29 +35,33 @@ const usersController = {
         res.render("users/login", {error: {
             msg: 'Los datos ingresados no son correctos, intente nuevamente'
         }})
+        } catch (error) {
+            console.log(error);            
+        }
+        
     },
-    register: function (req, res, next) {
+    register: function (req, res, next) { 
         res.render("users/register.ejs", { title: "Express" });
     },
-    processRegister: (req, res) => {
-        // Leer el json de usuarios
-        const users = JSON.parse(fs.readFileSync(usersPath, "utf8"));
+    processRegister: async(req, res) => { 
+        try {
         // Recibir la informacion y armar la estructura de un nuevo usuario
         let newUser = {
-            id: uuid(),
             name: req.body.name,
             direction: req.body.direction,
             email: req.body.email,
             profile: req.file?.filename || "default-profile.png",
-            rol: "USER",
             password: bycrypt.hashSync(req.body.password, 12),
         };
-        // Agregar al Array de usuarios este nuevo
-        users.push(newUser);
-        // Actualizar el archivo con lo nuevo
-        fs.writeFileSync(usersPath, JSON.stringify(users, null, " "));
+        // Agregar el nuevo registro
+        await db.User.create(newUser)
         // Redireccionar al login
         res.redirect("/users/login");
+        } catch (error) {
+            console.log(error);
+            
+        }
+       
     },
     profile: function (req, res, next) {
         res.render("users/profile.ejs");

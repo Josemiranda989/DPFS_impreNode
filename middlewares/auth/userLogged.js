@@ -1,8 +1,6 @@
-const fs = require('fs')
-const path = require('path')
-const usersPath = path.join(__dirname, "../../", "/data", "/users.json");
+const db = require('../../database/models/index')
 
-function userLogged(req, res, next) {
+async function userLogged(req, res, next) {
     // Pregunta si hay usuario logueado
     if (req.session && req.session.userLogged) {
         // Setea nuevas variables locales
@@ -12,10 +10,13 @@ function userLogged(req, res, next) {
     }
 
     if(!req.session.userLogged && req.cookies.email){
-        // Leer el json de usuarios
-        const users = JSON.parse(fs.readFileSync(usersPath, "utf8"));
+
         // Buscar el usuario a loguearse
-        const userFound = users.find(user => user.email == req.cookies.email);
+        const userFound = await db.User.findOne({
+            where: {
+                email: req.cookies.email
+            }
+        }) 
         if(userFound){
             res.locals.isLogged = true;
             req.session.userLogged = userFound;

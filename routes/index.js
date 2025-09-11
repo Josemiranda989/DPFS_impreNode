@@ -1,5 +1,5 @@
 var express = require('express');
-const {home, contact, testDB} = require('../controllers/indexController');
+const {home, contact, testDB, testDBWithThen, testDBWithAsyncAwait, categoriesTest, categoriesOpt2} = require('../controllers/indexController');
 var router = express.Router();
 
 // http://localhost:3000/
@@ -10,6 +10,6 @@ router.get('/', home);
 /* GET contact page. */
 router.get('/contact', contact);
 
-router.get('/test-db', testDB)
+router.get('/test-db', categoriesOpt2)
 
 module.exports = router;

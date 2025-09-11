@@ -1,152 +1,129 @@
-const { v4: uuid } = require('uuid');
-
-const fs = require("fs"); // FileSystem -> Manejar Archivos
-const path = require("path"); // Path -> Manejar Rutas
-
-const productsPath = path.join(__dirname, "../", "data", "products.json");
-const categoriesPath = path.join(__dirname, "../", "data", "categories.json");
-const colorsPath = path.join(__dirname, "../", "data", "colors.json");
-
-const db = require('../database/models/index.js')
+const db = require("../database/models/index.js");
 
 const productsController = {
     catalog: async function (req, res, next) {
-        const products = await db.Product.findAll()
-        res.render("products/catalog.ejs", { products });
+        try {
+            const products = await db.Product.findAll();
+            res.render("products/catalog.ejs", { products });
+        } catch (error) {
+            console.log(error);
+        }
     },
     detail: async function (req, res, next) {
-        const id = req.params.id;
-
-        const prod = await db.Product.findByPk(req.params.id)
-
-        res.render("products/detail.ejs", { prod });
+        try {
+            const prod = await db.Product.findByPk(req.params.id);
+            res.render("products/detail.ejs", { prod });
+        } catch (error) {
+            console.log(error);
+        }
     },
 
     createForm: async (req, res) => {
-        // Categorias
-        const categories = await db.Category.findAll()
-        // Colores
-        const colors = await db.Color.findAll()
+        const categories = await db.Category.findAll();
+        const colors = await db.Color.findAll();
 
         res.render("products/create.ejs", { categories, colors });
     },
-    createProduct: (req, res) => {
-        // console.log("Req.file");
-        // console.log(req.file);
-        // Leer el json para utilizar
-        const products = JSON.parse(fs.readFileSync(productsPath, "utf8"));
-        // Crear nuevo producto en base a lo ingresado en el form por el cliente
-        const newProduct = {
-            id: uuid(),
-            name: req.body.name,
-            description: req.body.description,
-            category: req.body.category,
-            image: req.file?.filename || "not-found.jpg",
-            colors: req.body.colors,
-            price: req.body.price,
-        };
-        // Agregar el nuevo prod al listado leido anteriormente
-        products.push(newProduct);
-        // Convertir a json ese listado de productos
-        const productsJSON = JSON.stringify(products, null, " ");
-        // Sobreescribir el json
-        fs.writeFileSync(productsPath, productsJSON);
-        // redireccionar
-        res.redirect("/products");
+    createProduct: async (req, res) => {
+        try {
+            // Armamos el nuevo producto en base a lo que  viene en el formulario
+            const newProduct = {
+                name: req.body.name,
+                description: req.body.description,
+                image: req.file?.filename || "not-found.jpg",
+                price: req.body.price,
+                category_id: req.body.category,
+                color_id: req.body.colors,
+            };
+            // Insertamos el nuevo registro en nuestra tabla
+            await db.Product.create(newProduct);
+            // Redireccionamos
+            res.redirect("/products");
+        } catch (error) {
+            console.log(error);
+        }
     },
-    updateForm: (req, res) => {
-        // Leer el json para utilizar
-        const products = JSON.parse(fs.readFileSync(productsPath, "utf8"));
-        // Buscar por id
-        const prod = products.find((prod) => {
-            return prod.id == req.params.id;
-        });
-        // Categorias
-        const categories = JSON.parse(fs.readFileSync(categoriesPath, "utf8"));
-        // Colores
-        const colors = JSON.parse(fs.readFileSync(colorsPath, "utf8"));
-        res.render("products/update.ejs", { prod, categories, colors });
+    updateForm: async (req, res) => {
+        try {
+            // Buscar por id
+            const prod = await db.Product.findByPk(req.params.id);
+            // Categorias
+            const categories = await db.Category.findAll();
+            // Colores
+            const colors = await db.Color.findAll();
+            res.render("products/update.ejs", { prod, categories, colors });
+        } catch (error) {
+            console.log(error);
+        }
     },
-    updateProduct: (req, res) => {
-        // Leer el json para utilizar
-        const products = JSON.parse(fs.readFileSync(productsPath, "utf8"));
-        // Recorrer el listado de productos y modificar el producto en caso de que se encuentre
-        products.forEach((product) => {
-            if (product.id == req.params.id) {
-                product.name = req.body.name;
-                product.description = req.body.description;
-                product.image = req.file?.filename || product.image;
-                product.category = req.body.category;
-                product.colors = req.body.colors;
-                product.price = req.body.price;
-            }
-        });
-        // Convertir a JSON ese listado
-        const productsJSON = JSON.stringify(products, null, " ");
-        // Sobreescribir el json de productos
-        fs.writeFileSync(productsPath, productsJSON);
-        // Redireccionar al producto editado
-        res.redirect(`/products/detail/${req.params.id}`);
+    updateProduct: async (req, res) => {
+        try {
+            // Buscar el producto a editar
+            const product = await db.Product.findByPk(req.params.id);
 
-        console.log("Se actualizo el producto", req.params.id);
-    },
-    deleteProduct: (req, res) => {
-        // Leer el json para utilizar
-        const products = JSON.parse(fs.readFileSync(productsPath, "utf8"));
+            const productUpdated = {
+                name: req.body.name,
+                description: req.body.description,
+                image: req.file?.filename || product.image,
+                category_id: req.body.category,
+                color_id: req.body.colors,
+                price: req.body.price,
+            };
 
-        // Quitar del listado el producto elegido para eliminar
-        const newProducts = products.filter(
-            (product) => product.id != req.params.id
-        );
+            await db.Product.update(productUpdated, {
+                where: { id: req.params.id },
+            });
 
-        // Convertir a JSON ese listado
-        const productsJSON = JSON.stringify(newProducts, null, " ");
-        // Sobreescribir el json de productos
-        fs.writeFileSync(productsPath, productsJSON);
-        // Redireccionar al producto editado
-        res.redirect(`/products`);
+            console.log("Se actualizo el producto", req.params.id);
 
-        console.log("Se elimino el producto con id", req.params.id);
+            // Redireccionar al producto editado
+            res.redirect(`/products/detail/${req.params.id}`);
+        } catch (error) {
+            console.log(error);
+        }
     },
-    utils: (req, res) => {
-        // Categorias
-        const categories = JSON.parse(fs.readFileSync(categoriesPath, "utf8"));
-        // Colores
-        const colors = JSON.parse(fs.readFileSync(colorsPath, "utf8"));
-        res.render("admin/utils.ejs", {categories, colors});
+    deleteProduct: async (req, res) => {
+        try {
+            await db.Product.destroy({
+                where: {
+                    id: req.params.id,
+                },
+            });
+            console.log("Se elimino el producto con id", req.params.id);
+            res.redirect(`/products`);
+        } catch (error) {
+            console.log(error);
+        }
     },
-    createCategory: (req, res) => {
-        // Categorias
-        const categories = JSON.parse(fs.readFileSync(categoriesPath, "utf8"));
+    utils: async (req, res) => {
+        try {
+            // Categorias
+            const categories = await db.Category.findAll();
+            // Colores
+            const colors = await db.Color.findAll();
+            res.render("admin/utils.ejs", { categories, colors });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    createCategory: async (req, res) => {
         // Nueva categoria
         const newCategory = {
-            id: categories.length + 1,
             name: req.body.name,
         };
-        // Agregar nueva cat
-        categories.push(newCategory);
-        // Convertir a JSON ese listado
-        const categoriesJSON = JSON.stringify(categories, null, " ");
-        // Sobreescribir el json de productos
-        fs.writeFileSync(categoriesPath, categoriesJSON);
+        // Agregar nuevo registro
+        await db.Category.create(newCategory);
         // Redireccionar al producto editado
         res.redirect(`/products/utils`);
     },
-    createColor: (req, res) => {
-        // Colores
-        const colors = JSON.parse(fs.readFileSync(colorsPath, "utf8"));
+    createColor: async (req, res) => {
         // Nueva categoria
         const newColor = {
-            id: colors.length + 1,
             name: req.body.name,
             code: req.body.code,
         };
         // Agregar nueva cat
-        colors.push(newColor);
-        // Convertir a JSON ese listado
-        const colorsJSON = JSON.stringify(colors, null, " ");
-        // Sobreescribir el json de productos
-        fs.writeFileSync(colorsPath, colorsJSON);
+        await db.Color.create(newColor);
         // Redireccionar al producto editado
         res.redirect(`/products/utils`);
     },

@@ -28,7 +28,7 @@
                               <select name="category" id="category">
                                 <option value="" disabled selected>Elegi una categoria</option>
                                 <% categories.forEach(category=> { %>
-                                    <option value="<%= category.name %>"><%=
+                                    <option value="<%= category.id %>"><%=
                                             category.name %>
                                     </option>
                                 <% }) %>
@@ -40,7 +40,7 @@
                             <select name="colors" id="colors">
                                 <option value="" disabled selected>Elegi un color</option>
                                 <% colors.forEach(color=> { %>
-                                    <option value="<%= color.name %>" ><%= color.name %>
+                                    <option value="<%= color.id %>" ><%= color.name %>
                                     </option>
                                     <% }) %>
                             </select>

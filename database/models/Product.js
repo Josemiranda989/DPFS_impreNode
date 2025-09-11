@@ -1,3 +1,5 @@
+const { validate } = require("uuid");
+
 module.exports = (sequelize, DataTypes) => {
 
     const alias = 'Product';
@@ -5,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     const cols = {
             id: {
                 primaryKey: true,
+                autoIncrement: true,
                 type: DataTypes.INTEGER.UNSIGNED,
             },
             name: {
@@ -20,10 +23,16 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.INTEGER.UNSIGNED
             },
             category_id: {
-                type: DataTypes.INTEGER
+                type: DataTypes.INTEGER,
+                validate: {
+                    isNumeric:true
+                }
             },
             color_id: {
-                type: DataTypes.INTEGER
+                type: DataTypes.INTEGER,
+                validate: {
+                    isNumeric:true
+                }
             }
     }
 
