@@ -14,19 +14,15 @@ const {
 const { uploadProd } = require("../../middlewares/multer");
 
 
-// http://localhost:3000/products/
 /* GET catalog page. */
 router.get("/", catalog);
 
-// http://localhost:3000/products/detail/1
 /* GET detail page. */
 router.get("/detail/:id", detail);
 
-/* GET create form page. */
 // router.get("/create", admin , createForm);
 router.post("/create", uploadProd.single('image'), createProduct);
 
-/* GET update form page. */
 // router.get("/update/:id", updateForm);
 router.put("/update/:id",uploadProd.single('image'), updateProduct);
 

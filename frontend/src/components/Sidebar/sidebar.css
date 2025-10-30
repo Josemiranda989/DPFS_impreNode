@@ -1,0 +1,16 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4f4e4e;
+    min-height: 100vh;
+    padding: 50px 10px 0 10px;
+}
+
+.sidebar img {
+    width: 150px;
+}
+
+.sidebar-links {
+    font-size: 1.5rem;
+}

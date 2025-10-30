@@ -4,19 +4,55 @@ const productsController = {
     catalog: async function (req, res, next) {
         try {
             const products = await db.Product.findAll();
-            res.json(products);
+            const response = {
+                meta: {
+                    status: 200,
+                    count: products.length,
+                    path: "/api/products",
+                },
+                data: products,
+            };
+            res.json(response);
         } catch (error) {
             console.log(error);
         }
     },
-    detail: async function (req, res, next) {
-        try {
-            const prod = await db.Product.findByPk(req.params.id);
-            res.json( prod);
-        } catch (error) {
-            console.log(error);
+detail: async function (req, res, next) {
+    try {
+        const prod = await db.Product.findByPk(req.params.id);
+        let response;
+        
+        if (!prod) {
+            response = {
+                meta: {
+                    status: 404,
+                    path: `/api/products/${req.params.id}`,
+                },
+                message: `Producto con ID ${req.params.id} no encontrado.`,
+            }
+            return res.status(404).json(response);
         }
-    },
+
+        response = {
+            meta: {
+                status: 200,
+                path: `/api/products/${req.params.id}`,
+            },
+            data: prod,
+        };
+        res.json(response);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            meta: {
+                status: 500,
+                path: `/api/products/${req.params.id}`,
+            },
+            message: "Error interno del servidor.",
+        });
+    }
+},
+
 
     createProduct: async (req, res) => {
         try {
@@ -32,7 +68,7 @@ const productsController = {
             // Insertamos el nuevo registro en nuestra tabla
             await db.Product.create(newProduct);
             // Redireccionamos
-            res.json({msg:'Success'});
+            res.json({ msg: "Success" });
         } catch (error) {
             console.log(error);
         }
@@ -57,7 +93,7 @@ const productsController = {
             });
 
             // Redireccionar al producto editado
-             res.json({msg:'Success'});
+            res.json({ msg: "Success" });
         } catch (error) {
             console.log(error);
         }
@@ -69,7 +105,7 @@ const productsController = {
                     id: req.params.id,
                 },
             });
-            res.json({msg:'Success'});
+            res.json({ msg: "Success" });
         } catch (error) {
             console.log(error);
         }
@@ -80,7 +116,7 @@ const productsController = {
             const categories = await db.Category.findAll();
             // Colores
             const colors = await db.Color.findAll();
-            res.json( { categories, colors });
+            res.json({ categories, colors });
         } catch (error) {
             console.log(error);
         }
@@ -93,7 +129,7 @@ const productsController = {
         // Agregar nuevo registro
         await db.Category.create(newCategory);
         // Redireccionar al producto editado
-        res.json({msg:'Success'});
+        res.json({ msg: "Success" });
     },
     createColor: async (req, res) => {
         // Nueva categoria
@@ -104,7 +140,7 @@ const productsController = {
         // Agregar nueva cat
         await db.Color.create(newColor);
         // Redireccionar al producto editado
-        res.json({msg:'Success'});
+        res.json({ msg: "Success" });
     },
 };
 

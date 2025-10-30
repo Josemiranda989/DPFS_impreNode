@@ -1,0 +1,51 @@
+:root {
+    --primary-bgc: #60b69b;
+    --secondary-bgc: #2c3e50;
+    --primary-color: #27ae60;
+    --secondary-color: #16a085;
+    --text-detail: #ecf0f1;
+    --text-primary: #46484b;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-detail);
+    transition: all 0.5s;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+body {  
+  background-color: var(--primary-bgc);
+}
+
+button {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 6px 5px 0px rgba(0, 0, 0, 0.51);
+    -moz-box-shadow: 4px 6px 5px 0px rgba(0, 0, 0, 0.51);
+    box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.51);
+    transition: all 0.5s;
+}
+
+button:hover {
+    color: var(--text-detail);
+    background-color: var(--primary-color);
+}
+
+h1 {
+    text-align: center;
+}

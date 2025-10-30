@@ -1,4 +1,3 @@
-const { validate } = require("uuid");
 
 module.exports = (sequelize, DataTypes) => {
 
