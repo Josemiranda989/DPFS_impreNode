@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
 import "./detail.css";
+import { useParams } from "react-router-dom";
+import { Card } from "./Card";
 
 export const Detail = () => {
     const [product, setProduct] = useState(null);
+    const [statusCode, setStatusCode] = useState(200);
     const [loading, setLoading] = useState(true);
     const URL_BASE = "http://localhost:3000";
-    const SERVER_URL_IMAGES = `http://localhost:3000/images/products/`;
+
+    const { id } = useParams();
 
     useEffect(() => {
-        fetch(`${URL_BASE}/api/products/detail/8`)
+        fetch(`${URL_BASE}/api/products/detail/${id}`)
             .then((res) => res.json())
             .then((result) => {
-                console.log(result);
+                // console.log(result.meta.status);
+                setStatusCode(result.meta.status);
                 setProduct(result.data);
                 setLoading(false);
             });
@@ -19,18 +24,14 @@ export const Detail = () => {
 
     return (
         <div>
-            
             <div className="product-list">
                 {!loading ? (
-                    <div className="product-card">
-                        <h1>Detalle de producto {product.name} </h1>
-                        <img
-                            src={`${SERVER_URL_IMAGES}${product.image}`}
-                            alt="image-prod"
-                        />
-                        <h4>{product.name}</h4>
-                        <p>{product.price}</p>
-                    </div>
+                    statusCode == 200 ? (
+                        <Card product={product} title="Detalle del producto"/>
+                        
+                    ) : (
+                        <p>Producto no encontrado</p>
+                    )
                 ) : (
                     <p>Cargando...</p>
                 )}

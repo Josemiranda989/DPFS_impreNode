@@ -57,26 +57,26 @@ const usersController = {
     //! Pendiente modificación para obtener usuario por pk / id
     profile: async function (req, res, next) {
         try {
-            const user = await db.User.findByPk(req.params.id,{
-                attributes: {exclude: ['password']}
-            })
+            const user = await db.User.findByPk(req.params.id, {
+                attributes: { exclude: ["password"] },
+            });
             let response;
-            
+
             if (!user) {
-            response = {
-                meta: {
-                    status: 404,
-                    path: `/api/users/${req.params.id}`,
-                },
-                message: `Usuario con ID ${req.params.id} no encontrado.`,
+                response = {
+                    meta: {
+                        status: 404,
+                        path: `/api/users/${req.params.id}`,
+                    },
+                    message: `Usuario con ID ${req.params.id} no encontrado.`,
+                };
+                return res.status(404).json(response);
             }
-            return res.status(404).json(response);
-        }
 
             response = {
                 meta: {
                     status: 200,
-                    path: `/api/users/${req.params.id}` ,
+                    path: `/api/users/${req.params.id}`,
                 },
                 data: user,
             };
@@ -89,7 +89,7 @@ const usersController = {
     allUsers: async function (req, res) {
         try {
             const users = await db.User.findAll({
-                attributes: {exclude: ['password']}
+                attributes: { exclude: ["password"] },
             });
 
             const response = {
@@ -99,6 +99,28 @@ const usersController = {
                     path: "/api/users",
                 },
                 data: users,
+            };
+
+            res.json(response);
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
+    lastUser: async function (req, res) {
+        try {
+            const user = await db.User.findOne({
+                order: [["id", "DESC"]],
+                attributes: { exclude: ["password"] },
+            });
+
+            response = {
+                meta: {
+                    status: 200,
+                    path: `/api/users/last-user`,
+                    description: 'Endpoint que brinda el ultimo usuario agregado en la db'
+                },
+                data: user,
             };
 
             res.json(response);

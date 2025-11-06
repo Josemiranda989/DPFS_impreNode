@@ -1,0 +1,10 @@
+.title {
+    text-align: center;
+}
+
+.utils-list {
+    background-color: beige;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}

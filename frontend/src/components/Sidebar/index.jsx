@@ -1,29 +1,40 @@
 import "./sidebar.css";
 import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export const SideBar = () => {
+    const [viewSideBar, setViewSideBar] = useState(true);
+
+    const handleClick = () => {
+        setViewSideBar((estadoPrevio) => !estadoPrevio);
+    };
+
     return (
-        <div className="sidebar">
-            <a href="/">
-                <img src={logo} alt="" />
-            </a>
-            <ul className="sidebar-links">
-                <li>
-                    <a href="">Productos</a>
-                </li>
-                <li>
-                    <a href="">Usuarios</a>
-                </li>
-                <li>
-                    <a href="">Ultimo agregado</a>
-                </li>
-                <li>
-                    <a href="">Categorias</a>
-                </li>
-                <li>
-                    <a href="">Contacto</a>
-                </li>
-            </ul>
+        <div>
+            <div className={`sidebar ${!viewSideBar ? 'hiddeSideBar' : ''}`}>
+                <Link to="/">
+                    <img src={logo} alt="" />
+                </Link>
+                <ul className="sidebar-links">
+                    <li>
+                        <Link to="/">Productos</Link>
+                    </li>
+                    <li>
+                        <Link to="/users">Usuarios</Link>
+                    </li>
+                    <li>
+                        <Link to="/last-user">Ultimo agregado</Link>
+                    </li>
+                    <li>
+                        <Link to="/utils">Utilidades</Link>
+                    </li>
+                    <li>
+                        <Link to="/form">Categoria ➕ </Link>
+                    </li>
+                </ul>
+            </div>
+            <button className="cerrarSideBar" onClick={handleClick}>{viewSideBar ? 'Cerrar' : 'Abrir'} SideBar❌</button>
         </div>
     );
 };
