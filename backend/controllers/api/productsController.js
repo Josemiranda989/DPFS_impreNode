@@ -3,7 +3,25 @@ const db = require("../../database/models/index.js");
 const productsController = {
     catalog: async function (req, res, next) {
         try {
-            const products = await db.Product.findAll();
+            const products = await db.Product.findAll({
+      attributes: {
+        include: [
+          [
+            db.sequelize.literal(
+              `CONCAT('${process.env.URL_API_HOST}:${process.env.PORT}${process.env.PATH_PROD_IMAGES}/', Product.image)`
+            ),
+            "urlImage",
+          ],
+          [
+            db.sequelize.literal(
+              `CONCAT('${process.env.URL_API_HOST}:${process.env.PORT}/api/products/detail/', Product.id)`
+            ),
+            "url",
+          ],
+        ],
+      },
+      // raw: true,
+    });
             const response = {
                 meta: {
                     status: 200,

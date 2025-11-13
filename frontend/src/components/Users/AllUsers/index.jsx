@@ -5,10 +5,13 @@ import './allUsers.css'
 export const AllUsers = () => {
     const [users, setUsers] = useState(null);
     const [loading, setLoading] = useState(true);
-    const URL_BASE = "http://localhost:3000";
+    const apiHost = import.meta.env.VITE_API_HOST;
+    const apiPort = import.meta.env.VITE_API_PORT;
+
+    const URL_API = `${apiHost}:${apiPort}`;
 
     useEffect(() => {
-        fetch(`${URL_BASE}/api/users`)
+        fetch(`${URL_API}/api/users`)
             .then((res) => res.json())
             .then((result) => {
                 setUsers(result.data);

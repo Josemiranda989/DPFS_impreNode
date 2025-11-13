@@ -8,7 +8,6 @@ const session = require('express-session');
 const userLogged = require('./middlewares/auth/userLogged')
 const cors = require('cors')
 
-
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products')
@@ -16,6 +15,8 @@ const apiProductsRouter = require('./routes/api/products')
 const apiUsersRouter = require('./routes/api/users')
 
 const app = express();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

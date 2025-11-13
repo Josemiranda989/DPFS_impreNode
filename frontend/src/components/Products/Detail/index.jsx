@@ -7,12 +7,15 @@ export const Detail = () => {
     const [product, setProduct] = useState(null);
     const [statusCode, setStatusCode] = useState(200);
     const [loading, setLoading] = useState(true);
-    const URL_BASE = "http://localhost:3000";
+    const apiHost = import.meta.env.VITE_API_HOST;
+    const apiPort = import.meta.env.VITE_API_PORT;
+
+    const URL_API = `${apiHost}:${apiPort}`;
 
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`${URL_BASE}/api/products/detail/${id}`)
+        fetch(`${URL_API}/api/products/detail/${id}`)
             .then((res) => res.json())
             .then((result) => {
                 // console.log(result.meta.status);

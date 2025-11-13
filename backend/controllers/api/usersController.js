@@ -54,7 +54,6 @@ const usersController = {
             console.log(error);
         }
     }, */
-    //! Pendiente modificación para obtener usuario por pk / id
     profile: async function (req, res, next) {
         try {
             const user = await db.User.findByPk(req.params.id, {
@@ -89,7 +88,23 @@ const usersController = {
     allUsers: async function (req, res) {
         try {
             const users = await db.User.findAll({
-                attributes: { exclude: ["password"] },
+                attributes: {
+                    exclude: ["password"],
+                    include: [
+                        [
+                            db.sequelize.literal(
+                                `CONCAT('${process.env.URL_API_HOST}:${process.env.PORT}${process.env.PATH_USERS_IMAGES}/', User.profile)`
+                            ),
+                            "urlImage",
+                        ],
+                        [
+                            db.sequelize.literal(
+                                `CONCAT('${process.env.URL_API_HOST}:${process.env.PORT}/api/users/', User.id)`
+                            ),
+                            "url",
+                        ],
+                    ],
+                },
             });
 
             const response = {
@@ -111,14 +126,31 @@ const usersController = {
         try {
             const user = await db.User.findOne({
                 order: [["id", "DESC"]],
-                attributes: { exclude: ["password"] },
+                                attributes: {
+                    exclude: ["password"],
+                    include: [
+                        [
+                            db.sequelize.literal(
+                                `CONCAT('${process.env.URL_API_HOST}:${process.env.PORT}${process.env.PATH_USERS_IMAGES}/', User.profile)`
+                            ),
+                            "urlImage",
+                        ],
+                        [
+                            db.sequelize.literal(
+                                `CONCAT('${process.env.URL_API_HOST}:${process.env.PORT}/api/users/', User.id)`
+                            ),
+                            "url",
+                        ],
+                    ],
+                },
             });
 
             response = {
                 meta: {
                     status: 200,
                     path: `/api/users/last-user`,
-                    description: 'Endpoint que brinda el ultimo usuario agregado en la db'
+                    description:
+                        "Endpoint que brinda el ultimo usuario agregado en la db",
                 },
                 data: user,
             };

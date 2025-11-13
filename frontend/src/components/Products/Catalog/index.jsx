@@ -5,9 +5,13 @@ import "./catalog.css";
 export const Catalog = () => {
     const [products, setProducts] = useState(null);
     const [loading, setLoading] = useState(true);
-    const URL_BASE = "http://localhost:3000";
+    const apiHost = import.meta.env.VITE_API_HOST;
+    const apiPort = import.meta.env.VITE_API_PORT;
+
+    const URL_API = `${apiHost}:${apiPort}`;
+
     useEffect(() => {
-        fetch(`${URL_BASE}/api/products`)
+        fetch(`${URL_API}/api/products`)
             .then((res) => res.json())
             .then((result) => {
                 // console.log(result);

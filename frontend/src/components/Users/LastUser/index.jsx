@@ -7,9 +7,12 @@ useEffect;
 export const LastUser = () => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const URL_BASE = "http://localhost:3000";
+    const {VITE_API_HOST: apiHost, VITE_API_PORT: apiPort}= import.meta.env
+
+
+    const URL_API = `${apiHost}:${apiPort}`;
     useEffect(() => {
-        fetch(`${URL_BASE}/api/users/last-user`)
+        fetch(`${URL_API}/api/users/last-user`)
             .then((res) => res.json())
             .then((result) => {
                 setUser(result.data);

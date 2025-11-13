@@ -4,13 +4,18 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "npx nodemon -q ./bin/www"
+    "dev": "npx nodemon -q ./bin/www",
+    "linux-setup-env": "cp .env.example .env && cd ../frontend && cp .env.example .env",
+    "windows-setup-env": "copy .env.example .env && cd ../frontend && copy .env.example .env",
+    "db-create": "npx sequelize db:create"
+
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
+    "dotenv": "^17.2.3",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-session": "^1.18.2",

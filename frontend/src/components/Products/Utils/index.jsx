@@ -6,10 +6,13 @@ export const Utils = () => {
     const [colors, setColors] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const URL_BASE = "http://localhost:3000";
+    const apiHost = import.meta.env.VITE_API_HOST;
+    const apiPort = import.meta.env.VITE_API_PORT;
+
+    const URL_API = `${apiHost}:${apiPort}`;
 
     useEffect(() => {
-        fetch(`${URL_BASE}/api/products/utils`)
+        fetch(`${URL_API}/api/products/utils`)
             .then((res) => res.json())
             .then((result) => {
                 console.log(result);

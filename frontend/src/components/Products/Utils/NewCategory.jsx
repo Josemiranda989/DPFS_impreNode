@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 export const NewCategory = () => {
     const [category, setCategory] = useState('')
-    const URL_BASE = "http://localhost:3000";
+    const apiHost = import.meta.env.VITE_API_HOST;
+    const apiPort = import.meta.env.VITE_API_PORT;
+
+    const URL_API = `${apiHost}:${apiPort}`;
     const navigate = useNavigate()
 
     const handleSubmit = (event) => {
@@ -20,7 +23,7 @@ export const NewCategory = () => {
         
 
 
-        fetch(`${URL_BASE}/api/products/new-category`, {
+        fetch(`${URL_API}/api/products/new-category`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
